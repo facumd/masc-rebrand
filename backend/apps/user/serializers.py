@@ -30,20 +30,26 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class SignupSerializer(serializers.ModelSerializer):
-    first_name = serializers.CharField(required=True, source="first_name")
-    last_name = serializers.CharField(required=True, source="last_name")
-    username = serializers.CharField(required=True, source="username")
-    password = serializers.CharField(required=True, source="password")
+    first_name = serializers.CharField(
+        required=True,
+    )
+    last_name = serializers.CharField(required=True)
+    username = serializers.CharField(
+        required=True,
+    )
+    password = serializers.CharField(required=True)
     email = serializers.CharField(required=True)
+    permissions = serializers.IntegerField(required=True)
 
     class Meta:
         model = User
         fields = [
-            "name",
+            "first_name",
             "last_name",
             "username",
             "password",
             "email",
+            "permissions",
         ]
 
     def create(self, validated_data):
