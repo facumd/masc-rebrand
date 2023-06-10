@@ -1,21 +1,11 @@
 django==4.2.1
 django-environ==0.10.0
 django-cors-headers==3.14.0
-django-storages==1.13.1
 
 djangorestframework==3.14.0
-djangorestframework-simplejwt==5.2.2
-PyJWT==2.7.0
-# djangorestframework-api-response==0.0.30
 
 psycopg2==2.9.6
 
 Pillow==9.5.0
-mutagen==1.46.0
-
-argon2-cffi==21.3.0
-argon2-cffi-bindings==21.2.0
-
-python-slugify==6.1.2
 
 mercadopago==2.2.0
