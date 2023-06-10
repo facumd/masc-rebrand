@@ -45,13 +45,18 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-PROJECT_APPS = []
+PROJECT_APPS = [
+    "apps.account",
+    "apps.category",
+    "apps.product",
+    "apps.subcategory",
+    "apps.user",
+]
 
 THIRD_PARTY_APPS = [
     "corsheaders",
     "rest_framework",
-    "rest_framework_simplejwt",
-    "rest_framework_simplejwt.token_blacklist",
+    "rest_framework.authtoken",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
@@ -143,18 +148,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# AUTH_USER_MODEL = "user.UserAccount"
-
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication"
-    ],
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",
-        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
-        "rest_framework.permissions.IsAuthenticated",
-        "rest_framework.permissions.IsAdminUser",
-    ],
-}
+AUTH_USER_MODEL = "user.UserAccount"
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:4200"]
