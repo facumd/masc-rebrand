@@ -11,6 +11,7 @@ from rest_framework_simplejwt.token_blacklist.models import (
 )
 from rest_framework.permissions import AllowAny
 from datetime import timedelta
+from django.http import JsonResponse
 from .serializers import UserSerializer, SignupSerializer
 from .models import User
 

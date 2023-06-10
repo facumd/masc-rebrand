@@ -8,6 +8,7 @@ import { HomeRoutingModule } from './components/home/home-routing.moduke';
 import { AuthRoutingModule } from './components/auth/auth-routing.module';
 
 import { AppComponent } from './app.component';
+import { AuthModule } from './components/auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,8 +17,9 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     SharedModule,
     StoreModule,
-    HomeRoutingModule,
+    AuthModule,
     AuthRoutingModule,
+    HomeRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
