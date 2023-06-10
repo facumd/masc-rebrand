@@ -43,45 +43,59 @@
               />
             </svg>
           </button>
-          <a
-            class="nav-link text-opacity-75"
-            *ngIf="!isAuthenticated"
-            routerLink="carrito"
-            ><svg
+          <button
+            *ngIf="isAuthenticated"
+            class="nav-item"
+            class="btn btn-outline-success me-2 mb-2"
+            type="button"
+            routerLink="cart"
+          >
+            <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-shopping-cart"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-shop"
+              viewBox="0 0 16 16"
             >
-              <circle cx="8" cy="21" r="1"></circle>
-              <circle cx="19" cy="21" r="1"></circle>
               <path
-                d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"
-              ></path></svg
-          ></a>
+                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+              />
+            </svg>
+          </button>
         </li>
-        <form class="d-flex mb-2" role="search">
-          <button
-            class="btn btn-outline-success me-2"
-            type="button"
-            routerLink="login"
-          >
-            Iniciar Sesión
-          </button>
-          <button
-            class="btn btn-success me-2"
-            type="button"
-            routerLink="signup"
-          >
-            Registrarse
-          </button>
-        </form>
+        <button
+          *ngIf="!isAuthenticated"
+          class="btn btn-outline-success me-2 mb-2"
+          type="button"
+          routerLink="login"
+        >
+          Iniciar Sesión
+        </button>
+        <button
+          *ngIf="!isAuthenticated"
+          class="btn btn-success me-2 mb-2"
+          type="button"
+          routerLink="signup"
+        >
+          Registrarse
+        </button>
+        <button
+          *ngIf="isAuthenticated"
+          class="btn btn-success me-2 mb-2"
+          type="button"
+          routerLink="profile"
+        >
+          Mi perfil
+        </button>
+        <button
+          *ngIf="isAuthenticated"
+          class="btn btn-outline-success me-2 mb-2"
+          type="button"
+          (click)="onLogout()"
+        >
+          Cerrar Sesión
+        </button>
         <button
           class="btn btn-outline-success me-2 mb-2"
           type="button"

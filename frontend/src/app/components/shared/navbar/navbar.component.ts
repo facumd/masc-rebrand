@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
@@ -6,12 +8,15 @@ import { ThemeService } from 'src/app/services/theme.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
-  isAuthenticated: boolean = true;
-
+export class NavbarComponent implements OnInit, OnDestroy {
+  isAuthenticated: boolean = false;
+  private userSub!: Subscription;
   isDarkMode = false;
 
-  constructor(private themeService: ThemeService) {
+  constructor(
+    private themeService: ThemeService,
+    private authService: AuthService
+  ) {
     this.themeService.initializeDarkMode();
   }
 
@@ -25,5 +30,19 @@ export class NavbarComponent {
         this.themeService.enableLightMode();
       }
     }, 100);
+  }
+
+  ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isAuthenticated = !user ? false : true;
+    });
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 }
