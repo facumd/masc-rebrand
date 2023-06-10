@@ -6,9 +6,9 @@ import { SharedModule } from './components/shared/shared.module';
 import { StoreModule } from './components/store/store.module';
 import { HomeRoutingModule } from './components/home/home-routing.moduke';
 import { AuthRoutingModule } from './components/auth/auth-routing.module';
+import { AuthModule } from './components/auth/auth.module';
 
 import { AppComponent } from './app.component';
-import { AuthModule } from './components/auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent],
