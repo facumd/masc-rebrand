@@ -4,13 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { LogInComponent } from './pages/log-in/log-in.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { LoginComponent } from './pages/login/login.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
-  declarations: [LogInComponent, SignUpComponent],
+  declarations: [LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     BrowserModule,

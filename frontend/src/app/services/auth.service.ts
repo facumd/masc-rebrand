@@ -18,10 +18,7 @@ export class AuthService {
 
   signup(account: singupModel) {
     return this.http
-      .post<AuthResData>(
-        'http://localhost:8000/api/v1/cuentas/signup/',
-        account
-      )
+      .post<AuthResData>('http://localhost:8000/api/v1/account/signup', account)
       .pipe(
         catchError((error: HttpErrorResponse) => this.handleError(error)),
         tap((res) => {
@@ -32,7 +29,7 @@ export class AuthService {
 
   login(account: loginModel) {
     return this.http
-      .post<AuthResData>('http://localhost:8000/api/v1/cuentas/login/', account)
+      .post<AuthResData>('http://localhost:8000/api/v1/account/login', account)
       .pipe(
         catchError((error: HttpErrorResponse) => this.handleError(error)),
         tap((res) => {

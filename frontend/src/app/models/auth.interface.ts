@@ -21,11 +21,11 @@ export interface loginModel {
 
 export class User {
   constructor(
-    public id: string,
-    public email: string,
-    public username: string,
-    public name: string,
-    public token: string,
-    public is_admin: boolean
+    public id?: string,
+    public email?: string,
+    public username?: string,
+    public name?: string,
+    public token?: string,
+    public is_admin?: boolean
   ) {}
 }
