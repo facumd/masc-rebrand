@@ -8,13 +8,13 @@ import { AuthResData } from '../../../../models/auth.interface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
+  styleUrls: ['login.component.css'],
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   token: string = '';
   error: string = '';
   success: string = '';
-  users = { email: '', password: '' };
 
   constructor(
     private authService: AuthService,
@@ -24,25 +24,20 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: [this.users.email, [Validators.required, Validators.email]],
-      password: [
-        this.users.password,
-        [Validators.required, Validators.minLength(8)],
-      ],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   onLogin() {
-    console.log(this.loginForm.value);
     this.authService.login(this.loginForm.value).subscribe({
       next: (data: AuthResData) => {
         this.token = data?.token ?? '';
-        console.log(data);
         this.router.navigate(['/']);
       },
       error: (errorRes) => {
         this.error = errorRes;
-        console.log(errorRes);
+        alert(errorRes);
       },
     });
     this.loginForm.reset();

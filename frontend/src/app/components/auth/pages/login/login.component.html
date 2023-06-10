@@ -49,13 +49,14 @@
                       loginForm.get('password')?.touched
                     "
                   >
-                    Tenés que ingresar una contraseña!
+                    Tenés que ingresar una contraseña
                   </span>
                 </div>
 
                 <!-- Submit button -->
                 <button
                   type="submit"
+                  [disabled]="!loginForm.valid"
                   class="btn btn-success btn-block mb-4 text-center"
                 >
                   Iniciar Sesión
@@ -66,7 +67,7 @@
                 <button
                   type=" submit"
                   class="btn btn-success btn-block mb-4"
-                  routerLink="/sign-up"
+                  routerLink="/signup"
                 >
                   Registrarse
                 </button>
