@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  user = new BehaviorSubject<User>(null);
+  user = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -23,7 +23,7 @@ export class AuthService {
         account
       )
       .pipe(
-        catchError(this.handleError),
+        catchError((error: HttpErrorResponse) => this.handleError(error)),
         tap((res) => {
           console.log(res);
         })
@@ -34,7 +34,7 @@ export class AuthService {
     return this.http
       .post<AuthResData>('http://localhost:8000/api/v1/cuentas/login/', account)
       .pipe(
-        catchError(this.handleError),
+        catchError((error: HttpErrorResponse) => this.handleError(error)),
         tap((res) => {
           this.handleAuth(res);
         })
@@ -42,46 +42,53 @@ export class AuthService {
   }
 
   autologin() {
-    const userData: AuthResData = JSON.parse(localStorage.getItem('user'));
+    const userData: AuthResData | null = JSON.parse(
+      localStorage.getItem('user') || '{}'
+    );
+
     if (!userData) {
       return;
     }
+
     const loadedUser = new User(
-      userData.user_id,
-      userData.email,
-      userData.username,
-      userData.name,
-      userData.token
+      userData.user_id ?? '',
+      userData.email ?? '',
+      userData.username ?? '',
+      userData.name ?? '',
+      userData.token ?? '',
+      userData.is_admin ?? false
     );
+
     this.user.next(loadedUser);
     return;
   }
 
   private handleError(error: HttpErrorResponse) {
     console.log(error);
-    let errormessage = 'An unknown errror occured';
+    let errorMessage = 'An unknown error occurred';
     if (!error.error) {
-      return throwError(() => errormessage);
+      return throwError(() => errorMessage);
     }
     if (error.error.non_field_errors) {
-      errormessage = error.error.non_field_errors[0];
+      errorMessage = error.error.non_field_errors[0];
     }
     if (error.error.email) {
-      errormessage = error.error.email[0];
+      errorMessage = error.error.email[0];
     }
     if (error.error.username) {
-      errormessage = error.error.username[0];
+      errorMessage = error.error.username[0];
     }
-    return throwError(() => errormessage);
+    return throwError(() => errorMessage);
   }
 
   private handleAuth(res: AuthResData) {
     const user = new User(
-      res.user_id,
-      res.email,
-      res.username,
-      res.name,
-      res.token
+      res.user_id ?? '',
+      res.email ?? '',
+      res.username ?? '',
+      res.name ?? '',
+      res.token ?? '',
+      res.is_admin ?? false
     );
     this.user.next(user);
     localStorage.setItem('user', JSON.stringify(user));

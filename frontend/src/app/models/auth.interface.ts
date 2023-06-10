@@ -11,6 +11,7 @@ export interface AuthResData {
   name?: string;
   username: string;
   token?: string;
+  is_admin?: boolean;
 }
 
 export interface loginModel {
@@ -24,6 +25,7 @@ export class User {
     public email: string,
     public username: string,
     public name: string,
-    public token: string
+    public token: string,
+    public is_admin: boolean
   ) {}
 }
