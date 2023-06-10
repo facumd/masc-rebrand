@@ -4,7 +4,10 @@
       <span class="fs-5 px-2 py-3 fw-semibold">Categorias</span>
       <br /><br /><br /><br /><br /><br /><br /><br /><br />
     </div>
-    <div class="border rounded-3 text-center py-3">
+    <div
+      *ngIf="products == []; else noProducts"
+      class="border rounded-3 text-center py-3"
+    >
       <button class="btn btn-success fs-5 px-2 py-3 fw-semibold">
         Mostrar Productos
       </button>
@@ -36,5 +39,10 @@
         </li>
       </ul>
     </div>
+    <ng-template #noProducts>
+      <div class="border rounded-3 text-center py-3 text-center">
+        <h2>No hay productos para mostrar</h2>
+      </div>
+    </ng-template>
   </div>
 </div>
