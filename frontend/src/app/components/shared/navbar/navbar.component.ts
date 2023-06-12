@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isAdmin: boolean = false;
   private userSub!: Subscription;
   isDarkMode = false;
+  itemsInCart: number = 0;
 
   constructor(
     private themeService: ThemeService,
