@@ -4,45 +4,38 @@
       <span class="fs-5 px-2 py-3 fw-semibold">Categorias</span>
       <br /><br /><br /><br /><br /><br /><br /><br /><br />
     </div>
-    <div
-      *ngIf="products == []; else noProducts"
-      class="border rounded-3 text-center py-3"
-    >
+    <div class="border rounded-3 text-center py-3">
       <button class="btn btn-success fs-5 px-2 py-3 fw-semibold">
         Mostrar Productos
       </button>
-      <!--       <div class="card text-center" *ngFor="let product of products">
+      <div class="card text-center" *ngFor="let product of products">
         <div class="card-header">{{ product.title }}</div>
         <div class="card-body">
           <h5 class="card-title">{{ product.description }}</h5>
           <img [src]="product.image_link" />
+          <img src="{{ product.image_file }}" />
           <p class="card-text">
             Categoria: {{ product.subcategory.category?.name }}
           </p>
           <p class="card-text">Subcategoria: {{ product.subcategory.name }}</p>
           <p class="card-text">Precio: {{ product.price }}</p>
-          <p class="card-text">Precio: {{ product.price }}</p>
+          <p class="card-text">Subcategory: {{ product.subcategory.name }}</p>
           <p class="card-text">
             Vendedor: {{ product.created_by.username || "admin" }}
           </p>
           <a href="#" class="btn btn-success">Ver Producto</a>
         </div>
         <div class="card-footer text-muted">Stock: {{ product.stock }}</div>
-      </div> -->
+      </div>
 
-      <ul *ngFor="let product of products">
+      <!--       <ul *ngFor="let product of products">
         <li>{{ product.title }}</li>
         <li>{{ product.description }}</li>
         <li>{{ product.subcategory.category?.name }}</li>
         <li>
           {{ product.created_by.username || "admin" }}
         </li>
-      </ul>
+      </ul> -->
     </div>
-    <ng-template #noProducts>
-      <div class="border rounded-3 text-center py-3 text-center">
-        <h2>No hay productos para mostrar</h2>
-      </div>
-    </ng-template>
   </div>
 </div>
