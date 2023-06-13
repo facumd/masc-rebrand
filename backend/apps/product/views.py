@@ -41,6 +41,7 @@ class ProductListView(APIView):
                 description=description,
                 price=price,
                 stock=stock,
+                image_link=image_link,
                 subcategory=subcategory,
                 created_by=created_by,
             )
@@ -94,7 +95,7 @@ class ProductDetailView(APIView):
         try:
             product = Product.objects.get(slug=slug)
             product.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
+            return Response({"Product Deleted"}, status=status.HTTP_204_NO_CONTENT)
         except Product.DoesNotExist:
             return Response(
                 {"error": "Product Not Found"}, status=status.HTTP_404_NOT_FOUND
