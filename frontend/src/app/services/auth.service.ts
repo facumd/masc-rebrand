@@ -103,6 +103,18 @@ export class AuthService {
     return '';
   }
 
+  isLoggedIn(): boolean {
+    return this.user.value !== null;
+  }
+
+  isAdmin(): boolean {
+    const userData: User | null = JSON.parse(
+      localStorage.getItem('user') || '{}'
+    );
+
+    return (userData && userData?.is_admin) ?? false;
+  }
+
   logout() {
     this.user.next(null);
     localStorage.removeItem('user');
