@@ -29,7 +29,10 @@
           <ul class="list-unstyled">
             <li>Stock: {{ product?.stock }}</li>
           </ul>
-          <button class="btn btn-success btn-rounded">
+          <button
+            class="btn btn-success btn-rounded"
+            (click)="addToCart(product)"
+          >
             Agregar al Carrito
           </button>
         </div>
