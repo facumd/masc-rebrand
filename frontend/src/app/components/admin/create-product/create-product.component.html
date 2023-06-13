@@ -1,0 +1,161 @@
+<div class="container">
+  <h2>Create Product</h2>
+  <form
+    [formGroup]="productForm"
+    (ngSubmit)="createProduct()"
+    class="needs-validation"
+    novalidate
+  >
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            formControlName="title"
+            required
+          />
+          <span
+            class="invalid-feedback"
+            *ngIf="
+              productForm.controls['title'].invalid &&
+              productForm.controls['title'].touched
+            "
+          >
+            Title is required.
+          </span>
+        </div>
+        <div class="mb-3">
+          <label for="slug" class="form-label">Slug</label>
+          <input
+            type="text"
+            class="form-control"
+            id="slug"
+            formControlName="slug"
+            required
+          />
+
+          <span
+            class="invalid-feedback"
+            *ngIf="
+              productForm.controls['slug'].invalid &&
+              productForm.controls['slug'].touched
+            "
+          >
+            Slug is required.
+          </span>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            class="form-control"
+            id="description"
+            formControlName="description"
+            required
+          ></textarea>
+          <span
+            class="invalid-feedback"
+            *ngIf="
+              productForm.controls['description'].invalid &&
+              productForm.controls['description'].touched
+            "
+          >
+            Description is required.
+          </span>
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            formControlName="price"
+            required
+          />
+          <span
+            class="invalid-feedback"
+            *ngIf="
+              productForm.controls['price'].invalid &&
+              productForm.controls['price'].touched
+            "
+          >
+            Price is required.
+          </span>
+        </div>
+        <div class="mb-3">
+          <label for="stock" class="form-label">Stock</label>
+          <input
+            type="number"
+            class="form-control"
+            id="stock"
+            formControlName="stock"
+            required
+          />
+          <span
+            class="invalid-feedback"
+            *ngIf="
+              productForm.controls['stock'].invalid &&
+              productForm.controls['stock'].touched
+            "
+          >
+            Stock is required.
+          </span>
+        </div>
+        <div class="mb-3">
+          <label for="image_link" class="form-label">Image Link</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image_link"
+            formControlName="image_link"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="image_file" class="form-label">Image File</label>
+          <input
+            type="file"
+            class="form-control"
+            id="image_file"
+            formControlName="image_file"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="subcategory" class="form-label">Subcategory</label>
+          <select
+            id="subcategory"
+            formControlName="subcategory"
+            class="form-select"
+          >
+            <option value="">Selecciona una subcategoria</option>
+            <option
+              *ngFor="let subcategory of subcategories"
+              [value]="subcategory"
+            >
+              {{ subcategory.name }}
+            </option>
+          </select>
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              productForm.controls['subcategory'].invalid &&
+              productForm.controls['subcategory'].touched
+            "
+          >
+            Subcategory is required.
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="createProduct()"
+          [disabled]="productForm.invalid"
+        >
+          Create
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

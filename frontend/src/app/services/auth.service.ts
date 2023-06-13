@@ -91,6 +91,18 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  getUserId(): string {
+    const userData: AuthResData | null = JSON.parse(
+      localStorage.getItem('user') || '{}'
+    );
+
+    if (userData && userData.user_id) {
+      return userData.user_id;
+    }
+
+    return ''; // Return an empty string or handle the case when user_id is not available
+  }
+
   logout() {
     this.user.next(null);
     localStorage.removeItem('user');
