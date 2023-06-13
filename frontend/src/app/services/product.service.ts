@@ -29,6 +29,10 @@ export class ProductService {
     );
   }
 
+  deleteProduct(slug: string): Observable<void> {
+    return this.http.delete<void>(`${this.url}/api/v1/product/${slug}`);
+  }
+
   getSubcategories(): Observable<Subcategories[]> {
     return this.http.get<Subcategories[]>(
       `${this.url}/api/v1/subcategory/list`

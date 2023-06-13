@@ -45,6 +45,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   goToCreateProduct() {
     this.router.navigate(['/admin/create-product']);
   }
+  goToDeleteProduct() {
+    this.router.navigate(['/admin/delete-product']);
+  }
 
   ngOnDestroy() {
     this.userSub.unsubscribe();

@@ -6,9 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 
 import { CreateProductComponent } from './create-product/create-product.component';
+import { DeleteProductComponent } from './delete-product/delete-product.component';
 
 @NgModule({
-  declarations: [CreateProductComponent],
+  declarations: [CreateProductComponent, DeleteProductComponent],
   imports: [
     CommonModule,
     BrowserModule,
