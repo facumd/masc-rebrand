@@ -1,20 +1,21 @@
 <div class="container">
-  <h2>Create Product</h2>
+  <h2 class="py-4">Crear Producto</h2>
   <form
     [formGroup]="productForm"
     (ngSubmit)="createProduct()"
-    class="needs-validation"
+    class="needs-validation justify-content-center"
     novalidate
   >
     <div class="row">
       <div class="col-md-6">
         <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
+          <label for="title" class="form-label">Título</label>
           <input
             type="text"
             class="form-control"
             id="title"
             formControlName="title"
+            placeholder="Ej: Mi Producto Fantastico"
             required
           />
           <span
@@ -34,6 +35,7 @@
             class="form-control"
             id="slug"
             formControlName="slug"
+            placeholder="Ej: mi-producto-fantastico"
             required
           />
 
@@ -48,11 +50,12 @@
           </span>
         </div>
         <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
+          <label for="description" class="form-label">Descripción</label>
           <textarea
             class="form-control"
             id="description"
             formControlName="description"
+            placeholder="Ej: Producto traído desde China, te cambiará la vida ya que facilita el acceso a otros productos"
             required
           ></textarea>
           <span
@@ -66,12 +69,13 @@
           </span>
         </div>
         <div class="mb-3">
-          <label for="price" class="form-label">Price</label>
+          <label for="price" class="form-label">Precio</label>
           <input
             type="number"
             class="form-control"
             id="price"
             formControlName="price"
+            min="1"
             required
           />
           <span
@@ -91,6 +95,7 @@
             class="form-control"
             id="stock"
             formControlName="stock"
+            min="1"
             required
           />
           <span
@@ -104,7 +109,9 @@
           </span>
         </div>
         <div class="mb-3">
-          <label for="image_link" class="form-label">Image Link</label>
+          <label for="image_link" class="form-label"
+            >Link de Imagen <small>(*Obligatorio)</small></label
+          >
           <input
             type="text"
             class="form-control"
@@ -113,7 +120,7 @@
           />
         </div>
         <div class="mb-3">
-          <label for="image_file" class="form-label">Image File</label>
+          <label for="image_file" class="form-label">Imagen</label>
           <input
             type="file"
             class="form-control"
@@ -123,7 +130,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="subcategory" class="form-label">Subcategory</label>
+          <label for="subcategory" class="form-label">Subcategoria</label>
           <select
             id="subcategory"
             formControlName="subcategory"
@@ -149,11 +156,11 @@
         </div>
         <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-success mb-3"
           (click)="createProduct()"
           [disabled]="productForm.invalid"
         >
-          Create
+          Crear
         </button>
       </div>
     </div>
