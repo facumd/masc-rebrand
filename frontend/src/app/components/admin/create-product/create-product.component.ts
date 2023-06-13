@@ -72,6 +72,8 @@ export class CreateProductComponent implements OnInit {
     this.productService.createProduct(productData).subscribe({
       next: (response: ProductDetail) => {
         console.log('Product created:', response);
+        alert('Producto Creado');
+        this.productForm.reset();
       },
       error: (error) => {
         console.error('Error creating product:', error);
