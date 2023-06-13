@@ -92,15 +92,15 @@ export class AuthService {
   }
 
   getUserId(): string {
-    const userData: AuthResData | null = JSON.parse(
+    const userData: User | null = JSON.parse(
       localStorage.getItem('user') || '{}'
     );
 
-    if (userData && userData.user_id) {
-      return userData.user_id;
+    if (userData && userData.id) {
+      return userData.id;
     }
 
-    return ''; // Return an empty string or handle the case when user_id is not available
+    return '';
   }
 
   logout() {

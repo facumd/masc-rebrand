@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import slugify from 'slugify';
 
 import { ProductDetail } from 'src/app/models/productDetail.interface';
 import { Subcategories } from 'src/app/models/subcategories.interface';
@@ -47,9 +47,11 @@ export class CreateProductComponent implements OnInit {
   }
 
   createProduct() {
-    if (this.productForm?.invalid) {
+    if (this.productForm?.invalid || !this.productForm.value.subcategory) {
       return;
     }
+
+    debugger;
 
     const selectedSubcategoryId = this.productForm.value.subcategory;
     const selectedSubcategory = this.subcategories.find(
@@ -63,13 +65,11 @@ export class CreateProductComponent implements OnInit {
 
     const productData = {
       ...this.productForm.value,
-      subcategory: selectedSubcategory ? selectedSubcategory.id : null,
+      subcategory: selectedSubcategory.id,
       created_by: this.authService.getUserId(),
     };
 
-    setTimeout(() => {
-      console.log('Product Data:', productData); // Log the product data after a delay
-    }, 1000); // Delay of 1 second (adjust as needed)
+    console.log('Product Data:', productData);
 
     this.productService.createProduct(productData).subscribe({
       next: (response: ProductDetail) => {

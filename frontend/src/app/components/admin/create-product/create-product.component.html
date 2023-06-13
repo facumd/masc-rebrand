@@ -132,7 +132,7 @@
             <option value="">Selecciona una subcategoria</option>
             <option
               *ngFor="let subcategory of subcategories"
-              [value]="subcategory"
+              [value]="subcategory.id"
             >
               {{ subcategory.name }}
             </option>
