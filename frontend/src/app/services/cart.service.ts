@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
 import { ProductDetail } from '../models/productDetail.interface';
 
 @Injectable({
@@ -6,17 +8,20 @@ import { ProductDetail } from '../models/productDetail.interface';
 })
 export class CartService {
   cartItems: ProductDetail[] = [];
+  private cartItemsSubject = new BehaviorSubject<ProductDetail[]>([]);
 
   constructor() {
     const storedCartItems = localStorage.getItem('cartItems');
     if (storedCartItems) {
       this.cartItems = JSON.parse(storedCartItems);
+      this.cartItemsSubject.next(this.cartItems);
     }
   }
 
   addToCart(product: ProductDetail) {
     this.cartItems.push(product);
     this.saveCartItemsToLocalStorage();
+    this.cartItemsSubject.next(this.cartItems);
   }
 
   private saveCartItemsToLocalStorage() {
@@ -28,6 +33,7 @@ export class CartService {
     if (index !== -1) {
       this.cartItems.splice(index, 1);
       this.saveCartItemsToLocalStorage();
+      this.cartItemsSubject.next(this.cartItems);
     }
   }
 
@@ -37,5 +43,11 @@ export class CartService {
 
   clearCart() {
     this.cartItems = [];
+    this.saveCartItemsToLocalStorage();
+    this.cartItemsSubject.next(this.cartItems);
+  }
+
+  getCartItemsObservable() {
+    return this.cartItemsSubject.asObservable();
   }
 }

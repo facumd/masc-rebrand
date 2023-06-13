@@ -51,8 +51,6 @@ export class CreateProductComponent implements OnInit {
       return;
     }
 
-    debugger;
-
     const selectedSubcategoryId = this.productForm.value.subcategory;
     const selectedSubcategory = this.subcategories.find(
       (subcategory) => subcategory.id === selectedSubcategoryId
