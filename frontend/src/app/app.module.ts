@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AppComponent } from './app.component';
 import { SharedModule } from './components/shared/shared.module';
 import { StoreModule } from './components/store/store.module';
-import { HomeRoutingModule } from './components/home/home-routing.moduke';
-import { AuthRoutingModule } from './components/auth/auth-routing.module';
+import { AdminModule } from './components/admin/admin.module';
+import { AuthModule } from './components/auth/auth.module';
 
-import { AppComponent } from './app.component';
+import { HomeRoutingModule } from './components/home/home-routing.moduke';
+import { AdminRoutingModule } from './components/admin/admin-routing.module';
+import { AuthRoutingModule } from './components/auth/auth-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,9 +18,12 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     SharedModule,
-    StoreModule,
-    HomeRoutingModule,
+    AuthModule,
     AuthRoutingModule,
+    HomeRoutingModule,
+    AdminModule,
+    AdminRoutingModule,
+    StoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
