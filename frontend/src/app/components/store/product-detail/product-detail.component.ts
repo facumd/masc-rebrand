@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { ProductDetail } from 'src/app/models/productDetail.interface';
@@ -16,7 +16,8 @@ export class ProductDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    public router: Router
   ) {}
 
   ngOnInit() {
@@ -27,8 +28,17 @@ export class ProductDetailComponent {
   }
 
   getProductDetail(slug: string) {
-    this.productService.getProductBySlug(slug).subscribe((product) => {
-      this.product = product;
-    });
+    this.productService.getProductBySlug(slug).subscribe(
+      (product) => {
+        this.product = product;
+      },
+      (error) => {
+        if (error.status === 404) {
+          this.router.navigate(['/not-found']);
+        } else {
+          console.error('An error occurred:', error);
+        }
+      }
+    );
   }
 }
