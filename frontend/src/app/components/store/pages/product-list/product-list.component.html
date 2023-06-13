@@ -1,41 +1,20 @@
-<div class="container-fluid py-2">
-  <div class="d-grid gap-3 py-2" style="grid-template-columns: 1fr 2fr">
-    <div class="border rounded-3 text-center py-3">
-      <span class="fs-5 px-2 py-3 fw-semibold">Categorias</span>
-      <br /><br /><br /><br /><br /><br /><br /><br /><br />
+<section>
+  <div class="container py-5">
+    <div
+      class="row bg-body-tertiary rounded py-3"
+      *ngIf="products?.length !== 0"
+    >
+      <app-product-item
+        *ngFor="let product of products"
+        [product]="product"
+        class="col-md-12 col-lg-4 mb-4 mb-lg-0"
+      ></app-product-item>
     </div>
-    <div class="border rounded-3 text-center py-3">
-      <button class="btn btn-success fs-5 px-2 py-3 fw-semibold">
-        Mostrar Productos
-      </button>
-      <div class="card text-center" *ngFor="let product of products">
-        <div class="card-header">{{ product.title }}</div>
-        <div class="card-body">
-          <h5 class="card-title">{{ product.description }}</h5>
-          <img [src]="product.image_link" />
-          <img src="{{ product.image_file }}" />
-          <p class="card-text">
-            Categoria: {{ product.subcategory.category?.name }}
-          </p>
-          <p class="card-text">Subcategoria: {{ product.subcategory.name }}</p>
-          <p class="card-text">Precio: {{ product.price }}</p>
-          <p class="card-text">Subcategory: {{ product.subcategory.name }}</p>
-          <p class="card-text">
-            Vendedor: {{ product.created_by.username || "admin" }}
-          </p>
-          <a href="#" class="btn btn-success">Ver Producto</a>
-        </div>
-        <div class="card-footer text-muted">Stock: {{ product.stock }}</div>
-      </div>
-
-      <!--       <ul *ngFor="let product of products">
-        <li>{{ product.title }}</li>
-        <li>{{ product.description }}</li>
-        <li>{{ product.subcategory.category?.name }}</li>
-        <li>
-          {{ product.created_by.username || "admin" }}
-        </li>
-      </ul> -->
+    <div
+      *ngIf="products?.length == 0"
+      class="text-center bg-body-tertiary rounded py-3"
+    >
+      <h3>No hay productos para mostrar</h3>
     </div>
   </div>
-</div>
+</section>
