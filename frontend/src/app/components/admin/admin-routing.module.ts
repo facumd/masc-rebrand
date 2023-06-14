@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { CreateProductComponent } from './create-product/create-product.component';
-import { AdminGuard } from 'src/app/guard/admin-auth-guard.guard';
+import { AdminGuard } from 'src/app/guard/admin-auth.guard';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
 
 const routes: Routes = [
