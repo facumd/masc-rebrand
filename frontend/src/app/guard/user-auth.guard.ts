@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class UserGuard {
+export class AuthGuard {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
@@ -22,10 +22,9 @@ export class UserGuard {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.authService.isLoggedIn() && this.authService.isAdmin()) {
+    if (this.authService.isLoggedIn()) {
       return true;
     } else {
-      // Redirect to another route or show an access denied page
       return this.router.parseUrl('/access-denied');
     }
   }
