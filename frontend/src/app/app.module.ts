@@ -3,30 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { SharedModule } from './components/shared/shared.module';
-import { StoreModule } from './components/store/store.module';
-import { AdminModule } from './components/admin/admin.module';
-import { AuthModule } from './components/auth/auth.module';
-import { ProfileModule } from './components/profile/profile.module';
-
-import { HomeRoutingModule } from './components/home/home-routing.moduke';
-import { AdminRoutingModule } from './components/admin/admin-routing.module';
-import { AuthRoutingModule } from './components/auth/auth-routing.module';
-import { ProfileRoutingModule } from './components/profile/profile-routing.module';
+import { SharedModule } from './shared/shared.module';
+import { StoreModule } from './modules/store/store.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { ProfileModule } from './modules/profile/profile.module';
+import { HomeModule } from './modules/home/home.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AuthModule,
-    AuthRoutingModule,
     SharedModule,
+    AuthModule,
+    HomeModule,
     ProfileModule,
-    HomeRoutingModule,
     AdminModule,
-    AdminRoutingModule,
-    ProfileRoutingModule,
     StoreModule,
   ],
   providers: [],
