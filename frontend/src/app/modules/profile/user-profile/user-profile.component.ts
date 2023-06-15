@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/models/auth.interface';
+import { User } from 'src/app/models/auth.model';
 
 @Component({
   selector: 'app-user-profile',

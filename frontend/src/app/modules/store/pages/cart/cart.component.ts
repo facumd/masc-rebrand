@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { loadStripe } from '@stripe/stripe-js';
 
 import { CartService } from 'src/app/services/cart.service';
-import { ProductDetail } from 'src/app/models/productDetail.interface';
+import { ProductDetail } from 'src/app/models/productDetail.model';
 import { environment } from 'src/environments/environment';
 
 @Component({

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import slugify from 'slugify';
 
-import { ProductDetail } from 'src/app/models/productDetail.interface';
-import { Subcategories } from 'src/app/models/subcategories.interface';
+import { ProductDetail } from 'src/app/models/productDetail.model';
+import { Subcategories } from 'src/app/models/subcategories.model';
 
 import { ProductService } from 'src/app/services/product.service';
 import { AuthService } from 'src/app/services/auth.service';

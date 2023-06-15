@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Product } from 'src/app/models/product.interface';
+import { Product } from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-product-item',

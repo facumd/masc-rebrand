@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/services/auth.service';
 import { ThemeService } from 'src/app/services/theme.service';
-import { ProductDetail } from 'src/app/models/productDetail.interface';
+import { ProductDetail } from 'src/app/models/productDetail.model';
 
 @Component({
   selector: 'app-navbar',

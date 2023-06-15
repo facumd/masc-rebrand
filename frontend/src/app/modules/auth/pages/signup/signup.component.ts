@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 
 import { AuthService } from './../../../../services/auth.service';
-import { AuthResData } from './../../../../models/auth.interface';
+import { AuthResData } from '../../../../models/auth.model';
 
 @Component({
   selector: 'app-signup',

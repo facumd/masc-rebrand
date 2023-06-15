@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { StoreComponent } from './pages/store/store.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { AccessDeniedComponent } from 'src/app/shared/access-denied/access-denied.component';
 import { SuccessfulCheckoutComponent } from 'src/app/shared/successful-checkout/successful-checkout.component';
@@ -34,4 +34,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class ProductRoutingModule {}
+export class StoreRoutingModule {}

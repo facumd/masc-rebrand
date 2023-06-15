@@ -1,53 +1,20 @@
-// To parse this data:
-//
-//   import { Convert, ProductDetail } from "./file";
-//
-//   const productDetail = Convert.toProductDetail(json);
-//
-// These functions will throw an error if the JSON doesn't
-// match the expected interface, even if the JSON is valid.
-
-export interface ProductDetail {
-  id: string;
-  title: string;
-  slug: string;
-  description: string;
-  price: string;
-  stock: number;
-  image_link: string;
-  image_file: null;
-  subcategory: Category;
-  created_by: CreatedBy;
-  created_at: Date;
-  updated_at: Date;
-}
-
-export interface CreatedBy {
-  email: string;
-  username: null;
-  first_name: string;
-  last_name: string;
-}
-
-export interface Category {
+export interface Subcategories {
   id: string;
   name: string;
   slug: string;
   description: string;
-  category?: Category;
+  category?: Subcategories;
   created_at: Date;
   updated_at: Date;
 }
 
-// Converts JSON strings to/from your types
-// and asserts the results of JSON.parse at runtime
 export class Convert {
-  public static toProductDetail(json: string): ProductDetail {
-    return cast(JSON.parse(json), r('ProductDetail'));
+  public static toSubcategories(json: string): Subcategories[] {
+    return cast(JSON.parse(json), a(r('Subcategories')));
   }
 
-  public static productDetailToJson(value: ProductDetail): string {
-    return JSON.stringify(uncast(value, r('ProductDetail')), null, 2);
+  public static subcategoriesToJson(value: Subcategories[]): string {
+    return JSON.stringify(uncast(value, a(r('Subcategories'))), null, 2);
   }
 }
 
@@ -234,39 +201,17 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-  ProductDetail: o(
-    [
-      { json: 'id', js: 'id', typ: '' },
-      { json: 'title', js: 'title', typ: '' },
-      { json: 'slug', js: 'slug', typ: '' },
-      { json: 'description', js: 'description', typ: '' },
-      { json: 'price', js: 'price', typ: '' },
-      { json: 'stock', js: 'stock', typ: 0 },
-      { json: 'image_link', js: 'image_link', typ: '' },
-      { json: 'image_file', js: 'image_file', typ: null },
-      { json: 'subcategory', js: 'subcategory', typ: r('Category') },
-      { json: 'created_by', js: 'created_by', typ: r('CreatedBy') },
-      { json: 'created_at', js: 'created_at', typ: Date },
-      { json: 'updated_at', js: 'updated_at', typ: Date },
-    ],
-    false
-  ),
-  CreatedBy: o(
-    [
-      { json: 'email', js: 'email', typ: '' },
-      { json: 'username', js: 'username', typ: null },
-      { json: 'first_name', js: 'first_name', typ: '' },
-      { json: 'last_name', js: 'last_name', typ: '' },
-    ],
-    false
-  ),
-  Category: o(
+  Subcategories: o(
     [
       { json: 'id', js: 'id', typ: '' },
       { json: 'name', js: 'name', typ: '' },
       { json: 'slug', js: 'slug', typ: '' },
       { json: 'description', js: 'description', typ: '' },
-      { json: 'category', js: 'category', typ: u(undefined, r('Category')) },
+      {
+        json: 'category',
+        js: 'category',
+        typ: u(undefined, r('Subcategories')),
+      },
       { json: 'created_at', js: 'created_at', typ: Date },
       { json: 'updated_at', js: 'updated_at', typ: Date },
     ],

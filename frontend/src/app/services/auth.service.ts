@@ -6,7 +6,7 @@ import {
   AuthResData,
   loginModel,
   User,
-} from '../models/auth.interface';
+} from '../models/auth.model';
 import { catchError, tap } from 'rxjs/operators';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { Router } from '@angular/router';
