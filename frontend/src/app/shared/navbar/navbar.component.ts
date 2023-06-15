@@ -3,9 +3,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+import { ProductDetail } from 'src/app/models/productDetail.model';
+
 import { AuthService } from 'src/app/services/auth.service';
 import { ThemeService } from 'src/app/services/theme.service';
-import { ProductDetail } from 'src/app/models/productDetail.model';
 
 @Component({
   selector: 'app-navbar',

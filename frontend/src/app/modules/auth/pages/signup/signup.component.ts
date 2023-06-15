@@ -7,8 +7,9 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AuthService } from './../../../../services/auth.service';
-import { AuthResData } from '../../../../models/auth.model';
+import { AuthResData } from 'src/app/models/auth.model';
+
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signup',
