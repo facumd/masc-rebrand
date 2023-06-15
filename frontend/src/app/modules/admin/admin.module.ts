@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin-routing.module';
 
-import { CreateProductComponent } from './create-product/create-product.component';
-import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { CreateProductComponent } from './pages/create-product/create-product.component';
+import { DeleteProductComponent } from './pages/delete-product/delete-product.component';
 
 @NgModule({
   declarations: [CreateProductComponent, DeleteProductComponent],

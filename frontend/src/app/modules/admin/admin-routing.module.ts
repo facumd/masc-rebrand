@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CreateProductComponent } from './create-product/create-product.component';
-import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { CreateProductComponent } from './pages/create-product/create-product.component';
+import { DeleteProductComponent } from './pages/delete-product/delete-product.component';
 
 import { AdminGuard } from 'src/app/guards/admin-auth.guard';
 
