@@ -37,7 +37,7 @@ export class DeleteProductComponent {
   deleteProduct(slug: string): void {
     this.productService.deleteProduct(slug).subscribe(
       () => {
-        console.log('Product deleted successfully.');
+        alert('Producto eliminado con éxito.');
         this.fetchProducts();
       },
       (error: any) => {
