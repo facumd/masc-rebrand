@@ -12,7 +12,7 @@ import { NotFoundComponent } from 'src/app/shared/not-found/not-found.component'
 import { AdminGuard } from 'src/app/guards/admin-auth.guard';
 
 const routes: Routes = [
-  { path: 'product', component: StoreComponent },
+  { path: 'store', component: StoreComponent },
   { path: 'product/:slug', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent },
   { path: 'access-denied', component: AccessDeniedComponent },
