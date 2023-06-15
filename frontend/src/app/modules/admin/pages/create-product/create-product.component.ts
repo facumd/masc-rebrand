@@ -57,7 +57,7 @@ export class CreateProductComponent implements OnInit {
     );
 
     if (!selectedSubcategory) {
-      console.error('Selected subcategory does not exist');
+      console.error('La categoria seleccionada no existe');
       return;
     }
 
@@ -71,12 +71,12 @@ export class CreateProductComponent implements OnInit {
 
     this.productService.createProduct(productData).subscribe({
       next: (response: ProductDetail) => {
-        console.log('Product created:', response);
-        alert('Producto Creado');
+        console.log('Producto creado:', response);
+        alert('Producto creado con éxito');
         this.productForm.reset();
       },
       error: (error) => {
-        console.error('Error creating product:', error);
+        console.error('Error al crear el producto:', error);
       },
     });
   }
