@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { loadStripe } from '@stripe/stripe-js';
+
 import { CartService } from 'src/app/services/cart.service';
 import { ProductDetail } from 'src/app/models/productDetail.interface';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -10,8 +14,9 @@ import { ProductDetail } from 'src/app/models/productDetail.interface';
 export class CartComponent {
   cartItems: ProductDetail[] = [];
   totalAmount: number = 0;
+  public stripePublicKey: string = environment.stripePublicKey;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private http: HttpClient) {
     this.cartItems = this.cartService.getCartItems();
     this.calculateTotalAmount();
   }
@@ -33,5 +38,16 @@ export class CartComponent {
       (total, item) => total + Number(item.price),
       0
     );
+  }
+
+  onCheckout(): void {
+    this.http
+      .post('http://localhost:8000/api/v1/payment/checkout', {
+        items: this.cartItems,
+      })
+      .subscribe(async (res: any) => {
+        let stripe = await loadStripe(this.stripePublicKey);
+        stripe?.redirectToCheckout({ sessionId: res.id });
+      });
   }
 }
