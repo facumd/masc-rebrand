@@ -25,7 +25,6 @@ export class AdminGuard {
     if (this.authService.isLoggedIn() && this.authService.isAdmin()) {
       return true;
     } else {
-      // Redirect to another route or show an access denied page
       return this.router.parseUrl('/access-denied');
     }
   }
